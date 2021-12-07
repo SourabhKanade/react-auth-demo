@@ -5,6 +5,10 @@
   padding: 2rem;
 }
 
+input {
+  caret-color: red;
+}
+
 .control {
   margin: 1rem 0;
   display: flex;
