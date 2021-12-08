@@ -1,13 +1,12 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import classes from './Navigation.module.css';
 import { EventContext } from "../../App";
 
 const Navigation = (props) => {
+
+  const option = useContext(EventContext);
   return (
     <>
-    <EventContext.Consumer>
-    {(option) => {
-    return (
      <nav className={classes.nav}>
       <ul>
         {option.isLoggedIn && (
@@ -27,9 +26,6 @@ const Navigation = (props) => {
         )}
       </ul>
     </nav>
-  );
-  }}
-    </EventContext.Consumer>
    </>
 )};
 export default Navigation;
