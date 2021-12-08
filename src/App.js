@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 import Login from './components/Login/Login';
 import Home from './components/Home/Home';
 import MainHeader from './components/MainHeader/MainHeader';
 
-const EventContext = React.createContext();
+  const EventContext = createContext();
 
 function App() {
 
@@ -30,7 +30,7 @@ function App() {
 
   return (
     <>
-    <EventContext.Provider Value={{isLoggedIn : isLoggedIn}}>
+    <EventContext.Provider value={{isLoggedIn : isLoggedIn}}>
       <MainHeader onLogout={logoutHandler} />
       <main>
         {!isLoggedIn && <Login onLogin={loginHandler} />}

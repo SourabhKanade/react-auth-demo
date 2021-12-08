@@ -4,6 +4,7 @@ import { EventContext } from "../../App";
 
 const Navigation = (props) => {
   return (
+    <>
     <EventContext.Consumer>
     {(option) => {
     return (
@@ -26,7 +27,9 @@ const Navigation = (props) => {
         )}
       </ul>
     </nav>
-  ) }};
+  );
+  }}
     </EventContext.Consumer>
+   </>
 )};
 export default Navigation;
