@@ -41,10 +41,12 @@ const Login = (props) => {
     event.preventDefault();
     props.onLogin(enteredEmail, enteredPassword);
   };
-
+ 
   return (
+  
     <Card className={classes.login}>
       <form onSubmit={submitHandler}>
+      <h1> Login </h1>
         <div
           className={`${classes.control} ${emailIsValid === false ? classes.invalid : '' }`}  >
           <label htmlFor="email">E-Mail</label>
