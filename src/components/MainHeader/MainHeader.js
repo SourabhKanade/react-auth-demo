@@ -7,7 +7,7 @@ const MainHeader = (props) => {
   return (
     <header className={classes['main-header']}>
       {/* <h1>Welcome Page</h1> */}
-     <a href="https://react-auth-zeta.vercel.app/" target="_blank" rel="noopener noreferrer">
+     <a href="/" rel="noopener noreferrer">
         <img src={img} alt="logo"/>
       </a>
       <Navigation onLogout={props.onLogout} />
