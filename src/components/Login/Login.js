@@ -6,31 +6,34 @@ import Button from '../UI/Button/Button';
 
 const Login = (props) => {
   const [enteredEmail, setEnteredEmail] = useState('');
+  const [emailIsTouched, setEmailIsTouched] = useState(false);
   const [emailIsValid, setEmailIsValid] = useState();
   const [enteredPassword, setEnteredPassword] = useState('');
   const [passwordIsValid, setPasswordIsValid] = useState();
   const [formIsValid, setFormIsValid] = useState(false);
 
+  const inputisvalid = enteredEmail.includes('@') && enteredPassword.trim().length > 6;
+ 
+
   const emailChangeHandler = (event) => {
     setEnteredEmail(event.target.value);
     // console.log(event.target.value);
-
-    setFormIsValid(
-      enteredEmail.includes('@') && enteredPassword.trim().length > 6
-    );
+    setFormIsValid(inputisvalid);
   };
 
   const passwordChangeHandler = (event) => {
     setEnteredPassword(event.target.value);
     // console.log(event.target.value);
-
-    setFormIsValid(
-      enteredPassword.trim().length > 6 && enteredEmail.includes('@')
-    );
+    setFormIsValid(inputisvalid);
   };
 
   const validateEmailHandler = () => {
     setEmailIsValid(enteredEmail.includes('@'));
+    setEmailIsTouched(true);
+    // const emailistouched = false;
+    // if(inputisvalid) {
+    //   emailistouched = true;
+    // }
   };
 
   const validatePasswordHandler = () => {
@@ -39,16 +42,19 @@ const Login = (props) => {
 
   const submitHandler = (event) => {
     event.preventDefault();
+    
     props.onLogin(enteredEmail, enteredPassword);
+    setEmailIsTouched(true);
   };
  
+  const invalidinput = emailIsValid === emailIsTouched ? classes.invalid : '' ;
   return (
   
     <Card className={classes.login}>
       <form onSubmit={submitHandler}>
       <h1> Login </h1>
         <div
-          className={`${classes.control} ${emailIsValid === false ? classes.invalid : '' }`}  >
+          className={`${classes.control} ${invalidinput}`}  >
           <label htmlFor="email">E-Mail</label>
           <input
             type="email"
@@ -58,8 +64,7 @@ const Login = (props) => {
             onBlur={validateEmailHandler}
           />
         </div>
-        <div
-          className={`${classes.control} ${passwordIsValid === false ? classes.invalid : '' }`} >
+        <div className={`${classes.control} ${passwordIsValid === false ? classes.invalid : '' }`} >
           <label htmlFor="password">Password</label>
           <input
             type="password"
