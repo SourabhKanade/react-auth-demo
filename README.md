@@ -17,7 +17,7 @@ If you made up your mind to contribute then fork the repository and star it, and
 ```
 3. change to project directory
 ```
-    $ cd React-Authentication
+    $ cd react-auth-demo
 ```
 4. you need to install node_modules
 ```
